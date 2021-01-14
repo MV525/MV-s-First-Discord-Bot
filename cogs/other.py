@@ -32,7 +32,7 @@ class other(commands.Cog):
     @commands.command(aliases = ["rickroll", "RickRoll"])
     async def rickRoll(self, ctx, *users: discord.User):
         for user in users:
-            await user.send("https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO")
+            await user.send("https://tenor.com/bjCoL.gif")
 
 
 def setup(client):
