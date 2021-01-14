@@ -8,6 +8,8 @@ import asyncio
 intents = discord.Intents.all()
 intents.members = True
 
+client = commands.Bot(command_prefix = "!", intents=intents)
+
 from flask import Flask
 from threading import Thread
 
@@ -45,9 +47,6 @@ async def on_ready():
     print('------')
 
 background_task.loop.create_task(my_background_task())
-
-
-client = commands.Bot(command_prefix = "!", intents=intents)
 
 
 for filename in os.listdir("./cogs"):
