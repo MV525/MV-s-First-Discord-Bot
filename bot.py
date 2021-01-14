@@ -7,7 +7,7 @@ intents.members = True
 
 client = commands.Bot(command_prefix = "!", intents=intents)
 
-@client.event()
+@client.event
 async def on_ready(self):
     print("MV's bot is active!")
 
