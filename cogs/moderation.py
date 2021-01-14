@@ -63,4 +63,4 @@ class moderation(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(bot_commands(client))
+    client.add_cog(moderation(client))
