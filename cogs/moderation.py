@@ -24,7 +24,7 @@ class moderation(commands.Cog):
         if ctx.author.guild_permissions.kick_members:
             if member:
                 await member.kick()
-                await ctx.send("")
+                await ctx.send(f"{member} has been kicked!")
             else:
                 await ctx.send("Please specify a user to kick!")
         else:
