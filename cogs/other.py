@@ -37,7 +37,7 @@ class other(commands.Cog):
     #Overriding help command
     @commands.command(aliases = ["HELP", "Help"])
     async def help(self, ctx):
-        await ctx.send("```Multiline\nhelp\ncommand```")        
+        await ctx.send("```\nMultiline\nhelp\ncommand```")        
 
 def setup(client):
     client.add_cog(other(client))
