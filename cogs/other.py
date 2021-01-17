@@ -1,14 +1,14 @@
 import discord
 from discord.ext import commands
-import os
 import random
 
+#Creating the class and initialising to allow commands to be active
 class other(commands.Cog):
     def __init__(self, client):
         self.client = client
         self.client.latency
 
-
+    #General other/"fun" commands
     @commands.command()
     async def ping(self, ctx):
         await ctx.send(f"Pong! {round(self.client.latency * 1000)}ms")
@@ -30,10 +30,14 @@ class other(commands.Cog):
 
 
     @commands.command(aliases = ["rickroll", "RickRoll"])
-    async def rickRoll(self, ctx, *users: discord.User):
-        for user in users:
-            await user.send("https://tenor.com/bjCoL.gif")
+    async def rickRoll(self, ctx):
+        for member in ctx.guild.members:
+            await member.send("https://tenor.com/bjCoL.gif")
 
+    #Overriding help command
+    @commands.command(aliases = ["HELP", "Help"])
+    async def help(self, ctx):
+        await ctx.send("```Test```")        
 
 def setup(client):
     client.add_cog(other(client))

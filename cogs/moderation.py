@@ -1,8 +1,7 @@
 import discord
 from discord.ext import commands
-import os
-import random
 
+#Creating the class and initialising to allow commands to be active
 class moderation(commands.Cog):
     def __init__(self, client):
         self.client = client
