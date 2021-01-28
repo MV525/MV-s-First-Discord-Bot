@@ -9,6 +9,9 @@ client = commands.Bot(command_prefix = "!", intents=intents, help_command=None)
 
 keep_alive.keep_alive() #Keeping bot alive
 
+@client.event()
+async def on_ready():
+    print(f"Logged in as {client.user.name} - {bot.user.id}")
 #Loads in all the required cogs
 for filename in os.listdir("./cogs"):
     if filename.endswith(".py"):
