@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import os
+import keep_alive
 intents = discord.Intents.all()
 intents.members = True
 
@@ -26,7 +27,7 @@ def keep_alive():
   server = Thread(target=run)
   server.start()
 
-keep_alive()
+keep_alive.keep_alive()
 
 #Loads in all the required cogs
 for filename in os.listdir("./cogs"):
