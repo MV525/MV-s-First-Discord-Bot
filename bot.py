@@ -1,8 +1,6 @@
 import discord
 from discord.ext import commands
 import os
-import random
-import asyncio
 intents = discord.Intents.all()
 intents.members = True
 
@@ -29,26 +27,6 @@ def keep_alive():
   server.start()
 
 keep_alive()
-
-discordClient = discord.Client()
-async def my_background_task():
-    await discordClient.wait_until_ready()
-    counter = 0
-    channel = discord.Object(id="channel_id_here")
-    while not discordClient.is_closed:
-        counter += 1
-        await discordClient.send_message(channel, counter)
-        await asyncio.sleep(60)  # task runs every 60 seconds
-
-@client.event
-async def on_ready():
-    print("Logged in as")
-    print(discordClient.user.name)
-    print(discordClient.user.id)
-    print("------")
-
-discordClient.loop.create_task(my_background_task())
-
 
 #Loads in all the required cogs
 for filename in os.listdir("./cogs"):
