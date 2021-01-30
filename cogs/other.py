@@ -9,7 +9,7 @@ class other(commands.Cog):
         self.client.latency
 
     #General other/"fun" commands
-    @commands.command(aliases = ["ping", "PING", "latency"])
+    @commands.command(aliases = ["Ping", "PING", "latency"])
     async def ping(self, ctx):
         await ctx.send(f"Pong! {round(self.client.latency * 1000)}ms")
 
@@ -21,7 +21,7 @@ class other(commands.Cog):
         await ctx.send(f"{name}\'s penis: 8{penis_size}D")
 
 
-    @commands.command(aliases = ["dm", "DM"])
+    @commands.command(aliases = ["dm"])
     async def DM(self, ctx, user: discord.User, *message):
         if message:
             await user.send(" ".join(message))
