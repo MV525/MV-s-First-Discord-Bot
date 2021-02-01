@@ -13,7 +13,7 @@ async def on_ready():
     change_status.start()
     print(f"Logged in as {client.user.name} - {client.user.id}")
 
-status_list = cycle(["being the best  bot", "being the worst bot"])
+status_list = cycle(["being the best bot", "being the worst bot"])
 #Background task:
 @tasks.loop(seconds=60)
 async def change_status():
