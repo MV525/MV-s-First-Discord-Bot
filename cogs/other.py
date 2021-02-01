@@ -9,9 +9,9 @@ class other(commands.Cog):
         self.client.latency
 
     #General other/"fun" commands
-    @commands.command(aliases = ["Ping", "PING", "latency"])
+    @commands.command(aliases = ["Ping", "PING", "latency", "Latency"])
     async def ping(self, ctx):
-        await ctx.send(f"Pong! {round(self.client.latency * 1000)}ms")
+        await ctx.send(f"{ctx.author.name}, your latency is: {round(self.client.latency * 1000)}ms")
 
 
     @commands.command(aliases = ["penissize", "PenisSize", "PS", "ps"])
