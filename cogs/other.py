@@ -15,10 +15,7 @@ class other(commands.Cog):
 
 
     @commands.command(aliases = ["penissize", "PenisSize", "PS", "ps"])
-    async def penisSize(self, ctx):
-        penis_size = "=" * random.randint(0, 15)
-        name = ctx.author.name
-        await ctx.send(f"{name}\'s penis: 8{penis_size}D")
+        await ctx.send(f"{name}\'s penis: 8{"=" * random.randint(0, 15)}D")
 
 
     @commands.command(aliases = ["dm"])
