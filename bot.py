@@ -17,7 +17,7 @@ status_list = cycle(["being the best bot", "being the worst bot"])
 #Background task:
 @tasks.loop(seconds=60)
 async def change_status():
-    await client.change_presence(activity = discord.ActivityType.competing(name = next(status_list))
+    await client.change_presence(activity = discord.ActivityType.competing(name = next(status_list)))
 
 #Loads in all the required cogs
 for filename in os.listdir("./cogs"):
