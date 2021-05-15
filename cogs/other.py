@@ -56,13 +56,13 @@ class other(commands.Cog):
     async def advice(self, ctx):
         response = requests.get("https://api.adviceslip.com/advice")
         advice = response.json()
-        await.ctx.send(advice["slip"]["advice"])
+        await ctx.send(advice["slip"]["advice"])
 
     @commands.command(aliases = ["chuckNorris", "ChuckNorris"])
     async def chucknorris(self, ctx):
         response = requests.get("https://api.chucknorris.io/jokes/random")
         chucknorris = response.json()
-        await.ctx.send(chucknorris["value"])
+        await ctx.send(chucknorris["value"])
 
 def setup(client):
     client.add_cog(other(client))
