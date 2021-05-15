@@ -36,12 +36,33 @@ class other(commands.Cog):
     #Overriding help command
     @commands.command(aliases = ["HELP", "Help"])
     async def help(self, ctx):
-        await ctx.send("```\nCommands for moderators:\n!purge / !clear => allows you to clear any number of messages\n!kick => kicks a specified user\n!ban => bans a specified user\n!unban => unbans a specified user and automatically sends an invite link\n\nGeneral/\"fun\" commands:\n!ping => returns ping in ms\n!penisSize => tells you how big your dick is\n!dm => allows you to dm a member in the server\n!rickRoll => rick rolls every member in the guild\n!fox => Displays a random fox!```")
+        await ctx.send("```\nCommands for moderators:\n!purge / !clear => Allows you to clear any number of messages\n!kick => Kicks a specified user\n!ban => Bans a specified user\n!unban => Unbans a specified user\n\nGeneral/\"fun\" commands:\n!ping => Returns ping in ms\n!penisSize => Tells you how big your dick is\n!dm => Allows you to dm a member in the server\n!rickRoll => Rick rolls every member in the guild\n!fox => Displays a random fox!\n!advice => Gives you a piece of advice :)\n!chucknorris => Gives you a random fact about Chuck Norris```")
 
     @commands.command(aliases = ["FOX"])
     async def fox(self, ctx):
         response = requests.get("https://randomfox.ca/floof")
         fox = response.json()
         await ctx.send(fox["image"])
+    
+    @commands.command(aliases = ["CAT"])
+    async def cat(self, ctx):
+        response = requests.get("https://api.thecatapi.com/v1/images/search")
+        cat = response.json()
+
+        for item in cat:
+            await ctx.send(item["url"])
+    
+    @commands.command(aliases = ["ADVICE"])
+    async def advice(self, ctx):
+        response = requests.get("https://api.adviceslip.com/advice")
+        advice = response.json()
+        await.ctx.send(advice["slip"]["advice"])
+
+    @commands.command(aliases = ["chuckNorris", "ChuckNorris"])
+    async def chucknorris(self, ctx):
+        response = requests.get("https://api.chucknorris.io/jokes/random")
+        chucknorris = response.json()
+        await.ctx.send(chucknorris["value"])
+
 def setup(client):
     client.add_cog(other(client))
