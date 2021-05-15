@@ -36,7 +36,7 @@ class other(commands.Cog):
     #Overriding help command
     @commands.command(aliases = ["HELP", "Help"])
     async def help(self, ctx):
-        await ctx.send("```\nCommands for moderators:\n!purge / !clear => Allows you to clear any number of messages\n!kick => Kicks a specified user\n!ban => Bans a specified user\n!unban => Unbans a specified user\n\nGeneral/\"fun\" commands:\n!ping => Returns ping in ms\n!penisSize => Tells you how big your dick is\n!dm => Allows you to dm a member in the server\n!rickRoll => Rick rolls every member in the guild\n!fox => Displays a random fox!\n!advice => Gives you a piece of advice :)\n!chucknorris => Gives you a random fact about Chuck Norris```")
+        await ctx.send("```\nCommands for moderators:\n!purge / !clear => Allows you to clear any number of messages\n!kick => Kicks a specified user\n!ban => Bans a specified user\n!unban => Unbans a specified user\n\nGeneral/\"fun\" commands:\n!ping => Returns ping in ms\n!penisSize => Tells you how big your dick is\n!dm => Allows you to dm a member in the server\n!rickRoll => Rick rolls every member in the guild\n!fox => Displays a random fox!\n!cat => Displays a random cat!\n!advice => Gives you a piece of advice :)\n!chucknorris => Gives you a random fact about Chuck Norris```")
 
     @commands.command(aliases = ["FOX"])
     async def fox(self, ctx):
