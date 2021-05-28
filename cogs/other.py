@@ -73,7 +73,7 @@ class other(commands.Cog):
     @commands.command(aliases = ["mathfacts", "mathFact"])
     async def mathfact(self, ctx, number = None):
         if number:
-            response = requests.get("http://numbersapi.com/{number}/?json")
+            response = requests.get(f"http://numbersapi.com/{number}/?json")
             number_fact = response.json()
             await ctx.send(number_fact["text"])
         else:
