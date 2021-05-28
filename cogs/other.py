@@ -36,7 +36,7 @@ class other(commands.Cog):
     #Overriding help command
     @commands.command(aliases = ["HELP", "Help"])
     async def help(self, ctx):
-        await ctx.send("```\nCommands for moderators:\n!purge / !clear => Allows you to clear any number of messages\n!kick => Kicks a specified user\n!ban => Bans a specified user\n!unban => Unbans a specified user\n\nGeneral/\"fun\" commands:\n!ping => Returns ping in ms\n!penisSize => Tells you how big your dick is\n!dm => Allows you to dm a member in the server\n!rickRoll => Rick rolls every member in the guild\n!fox => Displays a random fox!\n!cat => Displays a random cat!\n!advice => Gives you a piece of advice :)\n!chucknorris => Gives you a random fact about Chuck Norris```")
+        await ctx.send("```\nCommands for moderators:\n!purge / !clear => Allows you to clear any number of messages\n!kick => Kicks a specified user\n!ban => Bans a specified user\n!unban => Unbans a specified user\n\nGeneral/\"fun\" commands:\n!ping => Returns ping in ms\n!penisSize => Tells you how big your dick is\n!dm => Allows you to dm a member in the server\n!rickRoll => Rick rolls every member in the guild\n!fox => Displays a random fox!\n!cat => Displays a random cat!\n!advice => Gives you a piece of advice :)\n!chucknorris => Gives you a random fact about Chuck Norris\n!joke => Tells a random joke!\n!mathfact => Displays a random fact about the number you specify```")
 
     @commands.command(aliases = ["FOX"])
     async def fox(self, ctx):
@@ -63,6 +63,21 @@ class other(commands.Cog):
         response = requests.get("https://api.chucknorris.io/jokes/random")
         chucknorris = response.json()
         await ctx.send(chucknorris["value"])
+    
+    @commands.command(aliases = ["JOKE", "jokes"])
+    async def joke(self, ctx):
+        response = requests.get("https://geek-jokes.sameerkumar.website/api?format=json")
+        joke = response.json()
+        await ctx.send(joke["joke"])
+    
+    @commands.command(aliases = ["mathfacts", "mathFact"])
+    async def mathfact(self, ctx, number = None):
+        if number:
+            response = requests.get("http://numbersapi.com/{number}/?json")
+            number_fact = response.json()
+            await ctx.send(number_fact["text"])
+        else:
+            await ctx.send("You haven't specified a number or have given an incorrect value! Type !mathfact (or !mathfacts, !matHFact) followed by a number (such as: !mathfact 5)!")
 
 def setup(client):
     client.add_cog(other(client))
