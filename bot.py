@@ -13,12 +13,6 @@ async def on_ready():
     change_status.start()
     print(f"Logged in as {client.user.name} - {client.user.id}")
 
-@client.event
-async def on_command_error(ctx, error):
-    if isinstance(error, commands.CommandOnCooldown): #checks if command is on cooldown
-        message = f"This command is still on cooldown! Please try again in {error.retry_after} seconds!"
-        await ctx.send(message)
-
 status_list = cycle(["being the best bot", "being the worst bot"])
 #Background task:
 @tasks.loop(seconds=60)
