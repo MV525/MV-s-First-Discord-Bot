@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 import random
 import requests
-import time
 
 #Creating the class and initialising to allow commands to be active
 class other(commands.Cog):
@@ -84,7 +83,6 @@ class other(commands.Cog):
     @commands.cooldown(5, 5, commands.BucketType.user)
     async def test(self, ctx):
         message = await ctx.send("TEST1")
-        time.sleep(5)
         await message.edit(content="TEST")
 
 def setup(client):
