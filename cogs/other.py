@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-import asyncio
 import random
 import requests
 
@@ -80,26 +79,6 @@ class other(commands.Cog):
             await ctx.send(number_fact["text"])
         else:
             await ctx.send("You haven't specified a number or have given an incorrect value! Type !mathfact (or !mathfacts, !matHFact) followed by a number (such as: !mathfact 5)!")
-
-    @commands.command()
-    @commands.cooldown(1, 10, commands.BucketType.user) #1 use per user every 10 seconds
-    async def test(self, ctx):
-        global times_used
-        await ctx.send(f"y or n")
-
-        def check(msg):
-            return msg.author == ctx.author and msg.channel == ctx.channel and \
-        msg.content.lower() in ["y", "n"]
-
-        msg = await client.wait_for("message", check=check)
-        if msg.content.lower() == "y":
-            await ctx.send("You said yes!")
-        else:
-            await ctx.send("You said no!")
-        
-        times_used = times_used + 1
-
-        
 
 def setup(client):
     client.add_cog(other(client))
