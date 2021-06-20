@@ -80,5 +80,17 @@ class other(commands.Cog):
         else:
             await ctx.send("You haven't specified a number or have given an incorrect value! Type !mathfact (or !mathfacts, !matHFact) followed by a number (such as: !mathfact 5)!")
 
+    @commands.command()
+    async def test(self, message=None):
+        channel = message.channel
+        await channel.send("Say hello!")
+
+        def check(m):
+            return m.content == 'hello' and m.channel == channel
+        
+        msg = await client.wait_for('message', check=check)
+        await channel.send('Hello {.author}!'.format(msg))
+
+
 def setup(client):
     client.add_cog(other(client))
