@@ -81,7 +81,7 @@ class other(commands.Cog):
             await ctx.send("You haven't specified a number or have given an incorrect value! Type !mathfact (or !mathfacts, !matHFact) followed by a number (such as: !mathfact 5)!")
 
     @commands.command()
-    @commands.cooldown(3, 1, commands.BucketType.guild)
+    @commands.cooldown(5, 5, commands.BucketType.user)
     async def test(self, ctx):
         message = await ctx.send("TEST1")
         time.sleep(5)
