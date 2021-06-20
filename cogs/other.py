@@ -83,7 +83,7 @@ class other(commands.Cog):
     @commands.command()
     async def test(self, ctx):
         message = await ctx.send("TEST1")
-        sleep(3)
+        time.sleep(3)
         await message.edit(content="TEST")
 
 def setup(client):
