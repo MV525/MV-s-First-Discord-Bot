@@ -84,7 +84,7 @@ class other(commands.Cog):
     async def reaction_response_test(self, ctx):
         await ctx.send("Respond to this message!")
         reaction, user = await client.wait_for('reaction_add', check=lambda reaction, user: reaction.emoji == '👍')
-        await user.send("👍 to you too!")
+        await ctx.send("👍 to you too!")
 
         
 
