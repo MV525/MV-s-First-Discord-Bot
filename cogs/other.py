@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import random
 import requests
+import time
 
 #Creating the class and initialising to allow commands to be active
 class other(commands.Cog):
