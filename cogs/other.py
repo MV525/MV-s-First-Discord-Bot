@@ -96,5 +96,10 @@ class other(commands.Cog):
         else:
             await ctx.send("Please specify a wallpaper! Command syntax: !searchwallpaper WALLPAPER")
 
+    @commands.command()
+    async def test(self, ctx, TEST = None):
+        if TEST:
+            await ctx.send(TEST)
+
 def setup(client):
     client.add_cog(other(client))
