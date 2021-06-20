@@ -16,7 +16,7 @@ async def on_ready():
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown): #checks if command is on cooldown
-        message = f"This command is still on cooldown! Please wait {error.retry_after[0]} seconds!"
+        message = f"This command is still on cooldown! Please wait {str(error.retry_after)[0]} seconds!"
         await ctx.send(message)
 
 status_list = cycle(["being the best bot", "being the worst bot"])
