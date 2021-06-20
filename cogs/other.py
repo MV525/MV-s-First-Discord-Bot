@@ -80,10 +80,20 @@ class other(commands.Cog):
             await ctx.send("You haven't specified a number or have given an incorrect value! Type !mathfact (or !mathfacts, !matHFact) followed by a number (such as: !mathfact 5)!")
 
     @commands.command()
-    @commands.cooldown(5, 5, commands.BucketType.user)
-    async def test(self, ctx):
-        message = await ctx.send("TEST1")
-        await message.edit(content="TEST")
+    @commands.cooldown(1, 10, commands.BucketType.user) #1 use per user every 10 seconds
+    async def reaction_response_test(self, ctx):
+        await ctx.send("Respond to this message!")
+
+        def check(reaction, user):
+            return user == message.author and str(reaction.emoji) == "👍"
+        try:
+            reaction, user = await client.wait_for('reaction_add', timeout=60.0, check=check)
+        except async.TimeoutError:
+            await ctx.send("👎")
+        else:
+            await ctx.send("👍")
+
+        
 
 def setup(client):
     client.add_cog(other(client))
