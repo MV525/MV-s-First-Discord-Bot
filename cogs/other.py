@@ -81,7 +81,7 @@ class other(commands.Cog):
         else:
             await ctx.send("You haven't specified a number or have given an incorrect value! Type !mathfact (or !mathfacts, !matHFact) followed by a number (such as: !mathfact 5)!")
 
-    @commands.command(aliases = ["randomwallpaper", "randomWallpaper"])
+    @commands.command(aliases = ["randomwallpaper", "RandomWallpaper"])
     async def randomWallpaper(self, ctx):
         response = requests.get("https://wallhaven.cc/api/v1/search?sorting=random")
         wallpaper = response.json()
