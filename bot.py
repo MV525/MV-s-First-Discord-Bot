@@ -14,6 +14,18 @@ async def on_ready():
     change_status.start()
     print(f"Logged in as {client.user.name} - {client.user.id}")
 
+@client.event
+async def on_message(message):
+    if message.content.startswith("$greet"):
+        channel = message.channel
+        await channel.send("Say hello!")
+
+        def check(m):
+            return m.content == 'hello' and m.channel == channel
+        
+        msg = await client.wait_for('message', check=check)
+        await channel.send('Hello {.author}!'.format(msg))
+
 status_list = cycle(["being the best bot", "being the worst bot"])
 #Background task:
 @tasks.loop(seconds=60)
