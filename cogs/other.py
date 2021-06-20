@@ -92,7 +92,7 @@ class other(commands.Cog):
         if search_query:
             response = requests.get(f"https://wallhaven.cc/api/v1/search?query={search_query}&sorting=random")
             queried_wallpaper = response.json()
-            await ctx.send(queried_wallpaper["data"][0]["url"]])
+            await ctx.send(queried_wallpaper["data"][0]["url"])
         else:
             await ctx.send("Please specify a wallpaper! Command syntax: !searchwallpaper WALLPAPER")
 
