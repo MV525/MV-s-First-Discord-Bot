@@ -83,27 +83,15 @@ class other(commands.Cog):
 
     @commands.command()
     @commands.cooldown(1, 10, commands.BucketType.user) #1 use per user every 10 seconds
-    async def test(self, ctx):
-        await ctx.message.delete()
-        embed = discord.Embed(
-            title="Please tell me what you want to repeat!",
-            description = "||This request will timeout after 1 minute!||"
-        )
-        sent = await ctx.send(embed=embed)
+    async def test(self, ctx:commands.Context):
+        def check(message: discord.Message):
+            return message.channel == ctx.channel and message.author != ctx.me
+        
+        await ctx.send("foo")
+        foo = await client.wait_for('message', check=check)
 
-        try:
-            msg = await client.wait_for(
-                "message",
-                timeout = 60,
-                check=lambda message: message.author == ctx.author and message.channel == ctx.channel
-            )
-            if msg:
-                await sent.delete()
-                await msg.delete()
-                await ctx.send(msg.content)
-        except asyncio.TimeoutError:
-            await sent.delete()
-            await ctx.send("Cancelling due to timeout.", delete_after=10)
+        await ctx.send('bar')
+        bar = await client.wait_for('message', check=check)
 
         
 
