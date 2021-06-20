@@ -83,13 +83,8 @@ class other(commands.Cog):
     @commands.cooldown(1, 10, commands.BucketType.user) #1 use per user every 10 seconds
     async def reaction_response_test(self, ctx):
         await ctx.send("Respond to this message!")
-
-        try:
-            await client.wait_for('reaction_add', timeout=60.0, check=check)
-        except asyncio.TimeoutError:
-            await ctx.send("👎")
-        else:
-            await ctx.send("👍")
+        reaction, user = await client.wait_for('reaction_add', check=lambda reaction, user: reaction.emoji == '👍')
+        await user.send("👍 to you too!")
 
         
 
