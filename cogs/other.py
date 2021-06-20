@@ -81,7 +81,7 @@ class other(commands.Cog):
             await ctx.send("You haven't specified a number or have given an incorrect value! Type !mathfact (or !mathfacts, !matHFact) followed by a number (such as: !mathfact 5)!")
 
     @commands.command()
-    async def test(self, message=None):
+    async def test(self, message):
         channel = message.channel
         await channel.send("Say hello!")
 
