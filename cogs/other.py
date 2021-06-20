@@ -84,22 +84,17 @@ class other(commands.Cog):
     @commands.command(aliases = ["randomwallpaper", "RandomWallpaper"])
     async def randomWallpaper(self, ctx):
         response = requests.get("https://wallhaven.cc/api/v1/search?sorting=random")
-        wallpaper = response.json()
-        await ctx.send(wallpaper["data"][0]["url"])
+        random_wallpaper = response.json()
+        await ctx.send(random_wallpaper["data"][0]["url"])
 
     @commands.command(aliases = ["searchwallpaper", "SearchWallpaper"])
     async def searchWallpaper(self, ctx, search_query = None):
-        if query:
+        if search_query:
             response = requests.get(f"https://wallhaven.cc/api/v1/search?query={search_query}&sorting=random")
-            wallpaper = response.json()
-            await ctx.send(wallpaper["data"[0]["url"]])
+            queried_wallpaper = response.json()
+            await ctx.send(queried_wallpaper["data"[0]["url"]])
         else:
             await ctx.send("Please specify a wallpaper! Command syntax: !searchwallpaper WALLPAPER")
-
-    @commands.command()
-    async def test(self, ctx, TEST = None):
-        if TEST:
-            await ctx.send(TEST)
 
 def setup(client):
     client.add_cog(other(client))
