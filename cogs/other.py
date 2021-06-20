@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+import asyncio
 import random
 import requests
 
@@ -37,7 +38,7 @@ class other(commands.Cog):
     #Overriding help command
     @commands.command(aliases = ["HELP", "Help"])
     async def help(self, ctx):
-        await ctx.send("```\nCommands for moderators:\n!purge / !clear => Allows you to clear any number of messages\n!kick => Kicks a specified user\n!ban => Bans a specified user\n!unban => Unbans a specified user\n\nGeneral/\"fun\" commands:\n!ping => Returns ping in ms\n!penisSize => Tells you how big your dick is\n!dm => Allows you to dm a member in the server\n!rickRoll => Rick rolls every member in the guild\n!fox => Displays a random fox!\n!cat => Displays a random cat!\n!advice => Gives you a piece of advice :)\n!chucknorris => Gives you a random fact about Chuck Norris\n!joke => Tells a random joke!\n!mathfact => Displays a random fact about the number you specify```")
+        await ctx.send("```\nCommands for moderators:\n!purge / !clear => Allows you to clear any number of messages\n!kick => Kicks a specified user\n!ban => Bans a specified user\n!unban => Unbans a specified user\n\nGeneral/\"fun\" commands:\n!ping => Returns ping in ms\n!penisSize => Tells you how big your dick is\n!dm => Allows you to dm a member in the server\n!rickRoll => Rick rolls every member in the guild\n!fox => Displays a random fox!\n!cat => Displays a random cat!\n!advice => Gives you a piece of advice :)\n!chucknorris => Gives you a random fact about Chuck Norris\n!joke => Tells a random joke!\n!mathfact => Displays a random fact about the number you specify\n!randomwallpaper => Searches a random wallpaper!\n!searchWallpaper => Searches a random wallpaper of your choosing!```")
 
     @commands.command(aliases = ["FOX"])
     async def fox(self, ctx):
@@ -79,6 +80,21 @@ class other(commands.Cog):
             await ctx.send(number_fact["text"])
         else:
             await ctx.send("You haven't specified a number or have given an incorrect value! Type !mathfact (or !mathfacts, !matHFact) followed by a number (such as: !mathfact 5)!")
+
+    @commands.command(aliases = ["randomwallpaper", "randomWallpaper"])
+    async def randomWallpaper(self, ctx):
+        response = requests.get("https://wallhaven.cc/api/v1/search?sorting=random")
+        wallpaper = response.json()
+        await ctx.send(wallpaper["data"][0]["url"])
+
+    @commands.command(aliases = ["searchwallpaper", "SearchWallpaper"])
+    async def searchWallpaper(self, ctx, query = None):
+        if query:
+            response = requests.get("https://wallhaven.cc/api/v1/search?query={query}&sorting=random")
+            wallpaper = response.json()
+            await ctx.send(wallpaper["data"[0]["url"]])
+        else:
+            await ctx.send("Please specify a wallpaper! Command syntax: !searchwallpaper WALLPAPER")
 
 def setup(client):
     client.add_cog(other(client))
