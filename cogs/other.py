@@ -83,15 +83,21 @@ class other(commands.Cog):
 
     @commands.command()
     @commands.cooldown(1, 10, commands.BucketType.user) #1 use per user every 10 seconds
-    async def test(self, ctx:commands.Context):
-        def check(message: discord.Message):
-            return message.channel == ctx.channel and message.author != ctx.me
-        
-        await ctx.send("foo")
-        foo = await client.wait_for('message', check=check)
+    async def test(self, ctx):
+        global times_used
+        await ctx.send(f"y or n")
 
-        await ctx.send('bar')
-        bar = await client.wait_for('message', check=check)
+        def check(msg):
+            return msg.author == ctx.author and msg.channel == ctx.channel and \
+        msg.content.lower() in ["y", "n"]
+
+        msg = await client.wait_for("message", check=check)
+        if msg.content.lower() == "y":
+            await ctx.send("You said yes!")
+        else:
+            await ctx.send("You said no!")
+        
+        times_used = times_used + 1
 
         
 
