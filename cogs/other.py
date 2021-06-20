@@ -80,7 +80,7 @@ class other(commands.Cog):
             await ctx.send("You haven't specified a number or have given an incorrect value! Type !mathfact (or !mathfacts, !matHFact) followed by a number (such as: !mathfact 5)!")
 
     @commands.command()
-    async def test():
+    async def test(self, ctx):
         message = await ctx.send("TEST1")
         await asyncio.sleep(3)
         await message.edit(content="TEST")
