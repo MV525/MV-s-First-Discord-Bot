@@ -81,15 +81,9 @@ class other(commands.Cog):
 
     @commands.command()
     @commands.cooldown(1, 10, commands.BucketType.user) #1 use per user every 10 seconds
-    async def reaction_response_test(self, ctx):
-        await ctx.send("Say hello!")
-
-        def check(m):
-            return m.content == 'hello' and m.channel == ctx.channel
-
-        await client.wait_for('message', check=check)
-        await ctx.send(f'Hello {ctx.author}!')
-
+    async def reaction_response_test(self, ctx, message):
+        msg = await client.wait_for('message', check=lambda message: message.author == ctx.author)
+        await ctx.send(msg)
         
 
 def setup(client):
